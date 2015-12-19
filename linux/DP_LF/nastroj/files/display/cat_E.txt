@@ -1,0 +1,9 @@
+1: Rovina
+2: V
+3: JV
+4: J
+5: JZ
+6: Z
+7: SZ
+8: S
+9: SV
