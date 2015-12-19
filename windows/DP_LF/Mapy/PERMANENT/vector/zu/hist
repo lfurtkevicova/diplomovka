@@ -1,0 +1,8 @@
+COMMAND: v.in.ogr -o input="C:\DP_LF\data" layer="zu" output="zu" min_area=0.0001 snap=-1
+GISDBASE: C:\DP_LF
+LOCATION: Mapyy MAPSET: PERMANENT USER: Ludka DATE: Thu Apr 02 10:25:32 2015
+-----------------------------------------------------
+1 input polygons
+Total area: 5.51796E+008 (1 areas)
+Overlapping area: 0 (0 areas)
+Area without category: 0 (0 areas)

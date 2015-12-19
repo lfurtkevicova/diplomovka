@@ -1,0 +1,8 @@
+COMMAND: v.in.ogr -o input="C:\DP_LF\data" layer="geology" output="geology" min_area=0.0001 snap=-1
+GISDBASE: C:\DP_LF
+LOCATION: Mapy MAPSET: PERMANENT USER: Ludka DATE: Wed Mar 25 16:04:35 2015
+-----------------------------------------------------
+1435 input polygons
+Total area: 5.51791E+008 (1435 areas)
+Overlapping area: 0 (0 areas)
+Area without category: 0 (0 areas)

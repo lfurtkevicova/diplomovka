@@ -1,0 +1,9 @@
+1: Veľmi ploché
+2: Stredne ploché
+3: Pomerne ploché
+4: Veľmi mierne
+5: Stredne mierne
+6: Pomerne mierne
+7: Mierne strmé
+8: Stredne strmé
+9: Veľmi strmé

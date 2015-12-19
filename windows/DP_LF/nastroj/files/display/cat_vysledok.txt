@@ -1,0 +1,6 @@
+1: Velmi nizky
+2: Nizky
+3: Stredny 
+4: Vysoky
+5: Velmi vysoky
+

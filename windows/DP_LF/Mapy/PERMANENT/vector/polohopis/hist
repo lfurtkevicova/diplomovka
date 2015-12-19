@@ -1,0 +1,8 @@
+COMMAND: v.in.ogr -o input="C:\DP_LF\data" layer="polohopis" output="polohopis" min_area=0.0001 snap=-1
+GISDBASE: C:\DP_LF
+LOCATION: Mapy MAPSET: PERMANENT USER: Ludka DATE: Wed Mar 25 16:04:42 2015
+-----------------------------------------------------
+2497 input polygons
+Total area: 5.51792E+008 (4209 areas)
+Overlapping area: 2.07606E+006 (1224 areas)
+Area without category: 13148 (536 areas)
