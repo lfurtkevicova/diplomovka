@@ -15,6 +15,7 @@ import ScrolledText
 import tkFileDialog
 from tkFileDialog import askdirectory, asksaveasfile
 import platform
+import webbrowser
 
 # trieda, ktora umožní komunikovať s programom GRASS GIS
 class GRASS:   
@@ -62,6 +63,8 @@ class GRASS:
         import grass.script as gscript
         import grass.script.setup as gsetup
         gsetup.init(self.gisbase, self.gisdb, location, mapset)
+        #pouzitie python-u (vynutenie verzie pythonu)
+        os.environ['GRASS_PYTHON']='python'
         gscript.run_command('g.gui.gmodeler')              
         #os.environ['GISDBASE']=self.gisdb
         #os.environ['LOCATION_NAME']=location
@@ -224,7 +227,7 @@ class GUI(Tkinter.Frame):
         ttk.Button(tab1, text='INFO',command=tkMessageBox.showinfo).grid(row=12, column=0,\
                         sticky="WE", padx=5, pady=5,columnspan=1, rowspan=1)
         # tlacidlo ktorym sa da spustit prostredie GRASS GIS               
-        ttk.Button(tab1, text='RUN GRASS GIS',command=self.RG).grid(row=12, column=1,\
+        ttk.Button(tab1, text='RUN GRASS MODELER',command=self.RG).grid(row=12, column=1,\
                         sticky="WE", padx=5, pady=5,columnspan=1, rowspan=1)
             
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DRUHA ZALOZKA ~~~~~~~~~~~~~~~~~~~~~~
@@ -258,7 +261,7 @@ class GUI(Tkinter.Frame):
         ttk.Button(tab2, text='INFO',command=self.showexample).grid(row=7, column=0,\
                         sticky="WE", padx=5, pady=5,columnspan=1, rowspan=1)
                         
-        ttk.Button(tab2, text='RUN GRASS GIS',command=self.RG).grid(row=8, column=0,\
+        ttk.Button(tab2, text='RUN GRASS MODELER',command=self.RG).grid(row=8, column=0,\
                         sticky="WE", padx=5, pady=5,columnspan=1, rowspan=1)
                         
         ttk.Button(tab2, text='NEXT', command = self.II).grid(row=9, column=1,sticky='WE', padx=5,\
@@ -300,7 +303,7 @@ class GUI(Tkinter.Frame):
         ttk.Button(tab3, text='INFO',command=tkMessageBox.showinfo).grid(row=7, column=0,\
         sticky="WE", padx=5, pady=5,columnspan=1, rowspan=1)
                         
-        ttk.Button(tab3, text='RUN GRASS GIS',command=self.RG).grid(row=8, column=0,\
+        ttk.Button(tab3, text='RUN GRASS MODELER',command=self.RG).grid(row=8, column=0,\
         sticky="WE", padx=5, pady=5,columnspan=1, rowspan=1)
                         
         ttk.Button(tab3, text='NEXT', command = self.III).grid(row=9, column=1,\
@@ -358,7 +361,7 @@ class GUI(Tkinter.Frame):
         ttk.Button(tab4, text='NEXT', command = self.IV).grid(row=7,\
         column=1,sticky='WE',padx=5, columnspan=1, rowspan=1,pady=5)
         
-        ttk.Button(tab4,text='RUN GRASS GIS',command=self.RG ).grid(row=6, column=0,sticky='WE',\
+        ttk.Button(tab4,text='RUN GRASS MODELER',command=self.RG ).grid(row=6, column=0,sticky='WE',\
         padx=5, pady = 5, columnspan=1, rowspan=1) 
         
         ttk.Button(tab4, text="QUIT", command=self.gEND).grid(row=7, column=0,sticky='WE',\
@@ -406,7 +409,7 @@ class GUI(Tkinter.Frame):
         ttk.Button(tab5, text="SHOW VALUES ", command = self.valid).grid(row=7,\
         column=0,sticky="WE", padx=5, pady=5,columnspan=1, rowspan=1)
                         
-        ttk.Button(tab5, text='RUN GRASS GIS',command=self.RG).grid(row=8,\
+        ttk.Button(tab5, text='RUN GRASS MODELER',command=self.RG).grid(row=8,\
         column=0,sticky="WE",padx=5, pady=5,columnspan=1, rowspan=1)
         
         # zobrazenie orientacneho vysledku: bez legendy, existujucich zosuvov, ...                
@@ -719,7 +722,7 @@ class GUI(Tkinter.Frame):
         
         # funkcia na ulozenie reklasifikacnych pravidiel pre II reklasifikaciu
         def STL(a,b,c):
-            ctxt = self.cesta + "recl2\\" + "recl2_" + str(c) + ".txt"
+            ctxt = (os.path.join(self.cesta,'recl2','recl2_' + str(c) + ".txt"))
             file = open(ctxt, 'w+')
             for j,k in zip(a, b):
                 file.writelines("%r = %r\n" % (j,k))
@@ -792,7 +795,7 @@ class GUI(Tkinter.Frame):
         print "Factor", faktor,":"
         print "---------------------------------------"
         print "Weight of factor",faktor, "is %s." % W
-        print "Second reclassification is saved in *.txt file in\n%s." % (self.cesta + "recl2\\" + faktor + "_recl2.txt")
+        print "Second reclassification is saved in *.txt file in\n%s." % (os.path.join(self.cesta,'recl2',faktor + "_recl2.txt"))
         STL(recl1_u, self.recl1, faktor)
         # print Pt[0], Psd[0], p[0], pp[0], H, s, Hmax, p_pr, I, W
         if len(recl1t) == len(recl1tz):
@@ -825,7 +828,7 @@ class GUI(Tkinter.Frame):
     
     # vypisanie rovnice do txt suboru    
     def ypsilon(self):      
-        ctxt = self.cesta + "rovnica.txt"
+        ctxt = (os.path.join(self.cesta,'rovnica.txt'))
         file = open(ctxt, 'w+')
         file.write(self.txf4.get(1.0, END))        
         file.close()
@@ -845,7 +848,7 @@ class GUI(Tkinter.Frame):
         self.txf9.delete(1.0, END)
         redir = Presmerovanie(self.txf9)
         sys.stdout = redir
-        ctxt4 = self.cesta + "stats_COV1.txt"
+        ctxt4 = os.path.join(self.cesta,'stats_COV1.txt')
         try:
             fhand = open(ctxt4)
         except:
@@ -867,7 +870,7 @@ class GUI(Tkinter.Frame):
         TP4 = 1-tp4/P4
         FP4 = fp4/N4
         
-        ctxt6 = self.cesta + "stats_COV2.txt"
+        ctxt6 = os.path.join(self.cesta,'stats_COV2.txt')
         try:
             fhand = open(ctxt6)
         except:
@@ -889,7 +892,7 @@ class GUI(Tkinter.Frame):
         TP6 = 1-tp6/P6
         FP6 = fp6/N6
         
-        ctxt8 = self.cesta + "stats_COV3.txt"
+        ctxt8 = os.path.join(self.cesta,'stats_COV3.txt')
         try:
             fhand = open(ctxt8)
         except:
@@ -929,7 +932,7 @@ class GUI(Tkinter.Frame):
         pl.legend(loc="lower right")
         pl.fill_between(x,y,color="red",alpha=0.17)
         pl.grid(True,alpha=0.7)
-        pl.savefig(self.cesta + "plot.png")
+        pl.savefig(os.path.join(self.cesta,'plot.png'))
     
         areaUC = self.auc*100.00
         print "Area under the ROC curve:\n%0.2f" % areaUC,"%"        
@@ -964,7 +967,7 @@ class GUI(Tkinter.Frame):
         self.BA_stats(3)
           
     def BA_stats(self,fstats):
-        ctxt = self.cesta + "y_stats_COV" + str(fstats) + ".txt"
+        ctxt = os.path.join(self.cesta,'y_stats_COV' + str(fstats) + '.txt')
         try:
             fhand = open(ctxt)
         except:
@@ -998,7 +1001,7 @@ class GUI(Tkinter.Frame):
         self.VAL_recl(3)
         
     def VAL_recl(self,frecl):          
-        ctxt = self.cesta + "recl_COV" + str(frecl) + ".txt"
+        ctxt = os.path.join(self.cesta,'recl_COV' + str(frecl) + '.txt')
         try:
             fhand = open(ctxt)
         except:
@@ -1023,16 +1026,16 @@ class GUI(Tkinter.Frame):
 
     # zobrazenie orientacnej mapy po stlaceni prislusneho tlacidla
     def showimg(self):
-        image = self.cesta + "y.png"
+        image = os.path.join(self.cesta,'y.png')
         try:
-            os.startfile(image)
+            webbrowser.open(image)
         except:
             tkMessageBox.showwarning("","   Cannot open map.   ")
     # zobrazenie ROC krivky po stlaceni prislusneho tlacidla    
     def showROC(self):
-        ROCg = self.cesta + "plot.png"
+        ROCg = os.path.join(self.cesta,'plot.png')
         try:
-            os.startfile(ROCg)
+            webbrowser.open(ROCg)
         except:
             tkMessageBox.showwarning("","   Cannot open map.   ")
         
