@@ -1,4 +1,4 @@
-Diplomovka (súbory pre Windows a Linux)
+Diplomovka (súbory pre Windows a Linux), text dostupný [TU](https://github.com/lfurtkevicova/diplomovka/blob/master/DP_text.pdf) a prezentácia [TU](https://github.com/lfurtkevicova/diplomovka/blob/master/prezentacia_Telc_2015.pdf)
 
 <p> :+1: :pray: :e-mail: :hear_no_evil: :speak_no_evil: :see_no_evil: :blush:  
 
