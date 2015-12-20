@@ -11,4 +11,4 @@ Diplomovka (súbory pre Windows a Linux)
 - python script PLGP.py bol testovaný pomocou prostredia *Spyder*
 - výsledná (originál mapa s rozlížením `res = 10`) je uložená ako *.pack*, viď. [y-pack](https://github.com/lfurtkevicova/diplomovka/blob/master/y.pack)
 - stačí iba aby sa mapa *y* nahradila mapou *ypack* a výsledok totožný s diplomovkou je možné prezentovať
-- priečinok `pomocky`, viď. [pomôcky](https://github.com/lfurtkevicova/diplomovka/blob/master/y.pack) obsahuje príkladné súbory, pomocou ktorých možno reklasifikovať parametrické mapy, a tiež výslednú *y* mapu + sú tam report-y o parametrických mapách 
+- priečinok `pomocky`, viď. [pomôcky](https://github.com/lfurtkevicova/diplomovka/blob/master/y.pack) obsahuje príkladné súbory, pomocou ktorých možno reklasifikovať parametrické mapy, a tiež výslednú *y* mapu .. plus sú tam report-y o parametrických mapách
