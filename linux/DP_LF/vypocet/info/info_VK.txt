@@ -1,0 +1,12 @@
+n=562
+null_cells=299
+cells=861
+min=1
+max=7
+range=6
+mean=4.49288256227758
+mean_of_abs=4.49288256227758
+stddev=1.06084597465321
+variance=1.12539418193792
+coeff_var=23.6117005051526
+sum=2525

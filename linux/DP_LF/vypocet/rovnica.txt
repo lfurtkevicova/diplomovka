@@ -1,0 +1,2 @@
+y = geology_recl2 * 1.001208 + dmr_recl2 * 0.056754 + slope_recl2 * 0.019839 + aspect_recl2 * 0.002172 + curv_m_recl2 * 0.003578 + flowlength_recl2 * 0.000890 + accumulation_recl2 * 0.113718 + landuse_recl2 * 0.040754
+

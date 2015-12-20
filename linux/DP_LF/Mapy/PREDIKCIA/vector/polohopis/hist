@@ -1,0 +1,8 @@
+COMMAND: v.in.ogr -o input="/home/ludka/git/diplomovka/linux/DP_LF/data/polohopis.shp" output="polohopis" min_area=0.0001 snap=-1
+GISDBASE: /home/ludka/git/diplomovka/linux/DP_LF
+LOCATION: Mapy MAPSET: PREDIKCIA USER: ludka DATE: Sun Dec 20 21:10:56 2015
+-----------------------------------------------------
+2497 input polygons
+Total area: 5.51792E+08 (4209 areas)
+Overlapping area: 2.07606E+06 (1224 areas)
+Area without category: 13148 (536 areas)

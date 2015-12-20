@@ -1,0 +1,8 @@
+COMMAND: v.in.ogr -o input="/home/ludka/git/diplomovka/linux/DP_LF/data/geology.shp" output="geology" min_area=0.0001 snap=-1
+GISDBASE: /home/ludka/git/diplomovka/linux/DP_LF
+LOCATION: Mapy MAPSET: PREDIKCIA USER: ludka DATE: Sun Dec 20 21:10:54 2015
+-----------------------------------------------------
+1435 input polygons
+Total area: 5.51791E+08 (1435 areas)
+Overlapping area: 0 (0 areas)
+Area without category: 0 (0 areas)
