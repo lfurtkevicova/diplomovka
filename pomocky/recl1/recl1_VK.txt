@@ -1,0 +1,8 @@
+1=1 Cestná sie
+2=2 Osídlenie
+3=3 Lúky
+4=4 Orná pôda
+5=5 Lesy
+6=6 Záhrady
+7=7 Vodné toky
+
