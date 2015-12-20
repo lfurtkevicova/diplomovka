@@ -55,12 +55,19 @@ class GRASS:
             grass7bin_win = r'C:\Program Files (x86)\GRASS GIS 7.0.0\grass70.bat'
         else:
         #pripad pre LINUX
-            grass7bin_win = 'grass70'           
+            grass7bin_win = 'grass71'           
         return grass7bin_win
         
     def runGrass(self,location,mapset):
-        p = subprocess.Popen([self.getGrassPath(),os.path.join(self.gisdb,location,mapset)], stdout=subprocess.PIPE)
-        output, err = p.communicate()   
+        import grass.script as gscript
+        import grass.script.setup as gsetup
+        gsetup.init(self.gisbase, self.gisdb, location, mapset)
+        gscript.run_command('g.gui.gmodeler')              
+        #os.environ['GISDBASE']=self.gisdb
+        #os.environ['LOCATION_NAME']=location
+        #os.environ['MAPSET']=mapset        
+        #p = subprocess.Popen([self.getGrassPath(),os.path.join(self.gisdb,location,mapset)], stdout=subprocess.PIPE)
+        #output, err = p.communicate()   
     
 # trieda tykajuca sa presmerovania (obsah okna do konkretneho suboru)
 class Presmerovanie(object):
@@ -683,6 +690,7 @@ class GUI(Tkinter.Frame):
         gscript.run_command("g.mapset",overwrite = True,mapset = mapset, flags="c")
         gscript.run_command("g.mapset",overwrite = True,mapset = mapset1, flags="c")
         gscript.run_command("g.mapset",overwrite = True,mapset = mapset2, flags="c")
+        os.remove(os.path.join(cestaL,nameL,mapset2,'.gislock'))
     
     # vypise zoznam mapsetov v location   
     def zm(self):
@@ -748,8 +756,8 @@ class GUI(Tkinter.Frame):
         f2 = str(faktor)
         f3 = ".txt"
         f4 = "_z.txt"
-        Ft = self.cesta+"report\\"+f1+f2+f3
-        Ftz = self.cesta+"report\\"+f1+f2+f4
+        Ft = os.path.join(self.cesta,'report',f1+f2+f3)
+        Ftz = os.path.join(self.cesta,'report',f1+f2+f4)
         
         # plocha triedy
         pt = Report(self, Ft)        
