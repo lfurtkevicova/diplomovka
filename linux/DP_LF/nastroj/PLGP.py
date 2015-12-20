@@ -64,7 +64,7 @@ class GRASS:
         import grass.script.setup as gsetup
         gsetup.init(self.gisbase, self.gisdb, location, mapset)
         #pouzitie python-u (vynutenie verzie pythonu)
-        os.environ['GRASS_PYTHON']='python'
+        #os.environ['GRASS_PYTHON']='python'
         gscript.run_command('g.gui.gmodeler')              
         #os.environ['GISDBASE']=self.gisdb
         #os.environ['LOCATION_NAME']=location
